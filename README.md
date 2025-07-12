@@ -1,6 +1,6 @@
-# Reload Backend
+# Barley updated reload backend
 
-![Imgur](https://i.imgur.com/ImIwpRm.png)
+![Imgur](https://i.imgur.com/dSGYw51.png)
 
 Reload Backend is a universal Fortnite private server backend written in [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 
@@ -66,6 +66,7 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 
 ## Discord Bot Commands
 ### User Commands:
+- `/claimfulllocker` - Redeems full locker for donators
 - `/create {email} {username} {password}` - Creates an account on the backend (You can only create 1 account).
 - `/details` - Retrieves your account info.
 - `/lookup {username}` - Retrieves someones account info.
@@ -118,39 +119,6 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 ## Caldera Service
 Recreates a service that is used for the startup of newer Fortnite builds.
 
-### For login
-You need to use the **FortniteLauncher.exe** and with that also the **Anti Cheat**
-
-If you use [Fiddler](https://www.telerik.com/download/fiddler) you can use this script:
-
-```
-import Fiddler;
-
-class Handlers
-{
-    static function OnBeforeRequest(oSession: Session) {
-
-        if (oSession.PathAndQuery.Contains("/caldera/api/v1/launcher/racp"))
-        {
-            if (oSession.HTTPMethodIs("CONNECT"))
-            {
-                oSession["x-replywithtunnel"] = "ServerTunnel";
-                return;
-            }
-            oSession.fullUrl = "http://127.0.0.1:5000" + oSession.PathAndQuery
-        }
-        if (oSession.hostname.Contains("epicgames"))
-        {
-            if (oSession.HTTPMethodIs("CONNECT"))
-            {
-                oSession["x-replywithtunnel"] = "ServerTunnel";
-                return;
-            }
-            oSession.fullUrl = "http://127.0.0.1:3551" + oSession.PathAndQuery
-        }
-    }
-}
-```
 
 if u change **Caldera Service port** modify this string on **fiddler script**: `oSession.fullUrl = "http://127.0.0.1:urport" + oSession.PathAndQuery`
 if u change **Backend port** modify this string on **fiddler script**: `oSession.fullUrl = "http://127.0.0.1:urport" + oSession.PathAndQuery`
