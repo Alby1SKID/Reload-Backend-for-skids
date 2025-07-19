@@ -1,8 +1,8 @@
-# Barley updated reload backend
-
 ![Imgur](https://i.imgur.com/dSGYw51.png)
 
-Reload Backend is a universal Fortnite private server backend written in [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+<a href="https://www.javascript.com/" target="_blank">
+  <img src="https://img.shields.io/badge/Written_in-JAVASCRIPT_-yellow" />
+</a>
 
 Created by [Burlone](https://github.com/burlone0), This is a modded backend, all main backend credits to [Lawin](https://github.com/Lawin0129)
 
@@ -59,89 +59,10 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 * HTTPS/SSL Support:
     * [x] A working https/ssl system.
 
-## TO-DO
-- [ ] Differentiate ports between xmpp and matchmaker
-- [ ] Create a support with save the world
-- [ ] Create a support with creative
+## TODO
 
-## Discord Bot Commands
-### User Commands:
-- `/claimfulllocker` - Redeems full locker for donators
-- `/create {email} {username} {password}` - Creates an account on the backend (You can only create 1 account).
-- `/details` - Retrieves your account info.
-- `/lookup {username}` - Retrieves someones account info.
-- `/exchange-code` - Generates an exchange code for login. (One time use for each code and if not used it expires after 5 mins).
-- `/change-username {newUsername}` - You can change your username using this command.
-- `/change-email {newEmail}` - You can change your email using this command.
-- `/change-password {newPassword}` - You can change your password using this command.
-- `/sign-out-of-all-sessions` - Signs you out if you have an active session.
-- `/vbucksamount` - Shows how many vbucks to the user
-- `/giftvbucks {username}` - Send another user your V-Bucks.
-- `/claimvbucks` - Claim your daily {idk the default is 250} V-Bucks
-### Admin Commands:
-- You can only use the admin commands if you are a moderator.
-- `/addall {user}` - Allows you to give a user all cosmetics. Note: This will reset all your lockers to default
-- `/addvbucks {user} {vbucks}` - Lets you change a users amount of vbucks
-- `/additem {user} {cosmeticname}` - The name of the cosmetic you want to give
-- `/create-custom-match-code {code} {ip} {port}` - Create a custom matchmaking code.
-- `/ban {targetUsername}` - Ban a user from the backend by their username.
-- `/createhostaccount` - Creates a host account for Reload Backend.
-- `/createsac {code} {ingame-username}` - Creates a Support A Creator Code.
-- `/custom-match-code-list` - Lists all custom matchmaking codes.
-- `/delete {username}` - Deletes a users account
-- `/deletediscord {username}` - Deletes a users account
-- `/deletesac {username}` - Deletes a Support A Creator Code.
-- `/kick {targetUsername}` - Kick someone out of their current session by their username.
-- `/removevbucks {user} {vbucks}` - Lets you change a users amount of vbucks
-- `/removeitem {user} {cosmeticname}` - Allows you to remove a cosmetic (skin, pickaxe, glider, etc.) from a user
-- `/unban {targetUsername}` - Unban a user from the backend by their username.
-### How to set up moderators?
-1) Go to **Config/config.json** in the directory you extracted Reload Backend into.
-2) Open it, you should see a **"moderators"** section in the file.
-3) You have to get your discord id and replace discordId with it.
-4) You can set multiple moderators like this `["discordId","discordId2"]`.
-### How to setup multiple gameservers
-1) Go to **Config/config.json** in the directory you extracted Reload Backend into.
-2) Open it, you should see a **"gameServerIP"** section in the file.
-3) To add more gameservers you will have to do it like this `"gameServerIP": ["127.0.0.1:7777:playlist_defaultsolo", "127.0.0.1:7777:playlist_defaultduo"],`
-4) You have now added solos and duos to your matchmaking 
-
-## How to start Reload Backend
-1) Install [NodeJS](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/try/download/community).
-2) **Download** and **Extract** Reload Backend to a safe location.
-3) Run **"install_packages.bat"** to install all the required modules.
-4) Go to **Config/config.json** in the directory you extracted Reload Backend into.
-5) Open it, set your discord bot token **(DO NOT SHARE THIS TOKEN)** and **save it**. The discord bot will be used for creating accounts and managing your account (You can disable the discord bot by entering "bUseDiscordBot" to false in "Config/config.json").
-6) Run **"start.bat"**, if there is no errors, it should work.
-7) Use something to redirect the Fortnite servers to **localhost:8080** (Which could be fiddler, ssl bypass that redirects servers, etc...)
-8) When Fortnite launches and is connected to the backend, enter your email and password (or launch with an exchange code) then press login. It should let you in and everything should be working fine.
-
-## Caldera Service
-Recreates a service that is used for the startup of newer Fortnite builds.
-
-
-if u change **Caldera Service port** modify this string on **fiddler script**: `oSession.fullUrl = "http://127.0.0.1:urport" + oSession.PathAndQuery`
-if u change **Backend port** modify this string on **fiddler script**: `oSession.fullUrl = "http://127.0.0.1:urport" + oSession.PathAndQuery`
-
-After that go to the build folder **(/FortniteGame/Binaries/Win69)** and create a file with the name **launch.bat** or whatever you prefer and insert this code inside it:
-
-```bat
-@echo off
-set /p code=code: 
-start "" "FortniteLauncher.exe" -obfuscationid=WXis54njnKX1MJqoH0uRwdzlbQ1uqQ -AUTH_LOGIN=unused -AUTH_PASSWORD=%code% -AUTH_TYPE=exchangecode -epicapp=Fortnite -epicenv=Prod -EpicPortal -epicsandboxid=fn -noeac -noeaceos -fromfl=be 
-```
-
-Launch it, then go to Discord and type **/exchange-code**, copy the code and paste it into the .bat file.
-
-### Tested versions: 
-Right now the only tested version is **27.11**, if you test version, have questions or anything please make a ticket or a pull request [In the official repo](https://github.com/xLoigi/CalderaService).
-
-## License
-This **project/backend** is licensed under the **BSD 3-Clause License.**
-
-## Credits
-Credits have been moved to the **Contributors** section of github. If I forgot to include someone, write to **burlone413** on Discord
-
----
-
-**Reload Backend** is under continuous development and there could be errors of any kind, if you want to give advice on what to add and how to improve the project or report any errors you can do so by writing to **burlone413** on Discord
+ - [ ] SHOP SECTIONS
+ - [ ] BUNDLES
+ - [ ] ARENA
+ - [ ] MORE DISCORD BOT COMMANDS
+ - [ ] ADMIN PANEL
