@@ -66,3 +66,4 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
  - [ ] ARENA
  - [ ] MORE DISCORD BOT COMMANDS
  - [ ] ADMIN PANEL
+ - [ ] MORE ENDPOINTS
