@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 const User = require("../../../model/user.js");
 const functions = require("../../../structs/functions.js");
 const fs = require("fs");
@@ -6,44 +7,88 @@ const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
 module.exports = {
     commandInfo: {
         name: "ban",
-        description: "Ban a user from the backend by their username.",
+        description: "Ban a user by their in-game or Discord username.",
         options: [
             {
                 name: "username",
-                description: "Target username.",
+                description: "In-game or Discord username.",
                 required: true,
+                type: 3
+            },
+            {
+                name: "reason",
+                description: "Reason for the ban.",
+                required: false,
                 type: 3
             }
         ]
     },
+
     execute: async (interaction) => {
         await interaction.deferReply({ ephemeral: true });
-        
+
         if (!config.moderators.includes(interaction.user.id)) {
             return interaction.editReply({ content: "You do not have moderator permissions.", ephemeral: true });
         }
-    
-        const { options } = interaction;
-        const targetUser = await User.findOne({ username_lower: (options.get("username").value).toLowerCase() });
-    
-        if (!targetUser) return interaction.editReply({ content: "The account username you entered does not exist.", ephemeral: true });
-        else if (targetUser.banned) return interaction.editReply({ content: "This account is already banned.", ephemeral: true });
 
-        await targetUser.updateOne({ $set: { banned: true } });
+        const usernameInput = interaction.options.get("username").value.toLowerCase();
+        const reason = interaction.options.get("reason")?.value || "No reason provided";
 
-        let refreshToken = global.refreshTokens.findIndex(i => i.accountId == targetUser.accountId);
-        if (refreshToken != -1) global.refreshTokens.splice(refreshToken, 1);
+        let targetUser = await User.findOne({ username_lower: usernameInput });
 
-        let accessToken = global.accessTokens.findIndex(i => i.accountId == targetUser.accountId);
-        if (accessToken != -1) {
-            global.accessTokens.splice(accessToken, 1);
+        if (!targetUser) {
+            const match = interaction.client.users.cache.find(user =>
+                user.username.toLowerCase() === usernameInput
+            );
 
-            let xmppClient = global.Clients.find(client => client.accountId == targetUser.accountId);
-            if (xmppClient) xmppClient.client.close();
+            if (match) {
+                targetUser = await User.findOne({ discordId: match.id });
+            }
+        }
+
+        if (!targetUser) {
+            return interaction.editReply({ content: "User not found by in-game or Discord name.", ephemeral: true });
+        }
+
+        if (targetUser.banned) {
+            return interaction.editReply({ content: "This account is already banned.", ephemeral: true });
+        }
+
+        await targetUser.updateOne({ $set: { banned: true, banReason: reason } });
+
+
         }
 
         if (accessToken != -1 || refreshToken != -1) functions.UpdateTokens();
 
-        interaction.editReply({ content: `Successfully banned **${targetUser.username}**`, ephemeral: true });
+
+        const replyEmbed = new MessageEmbed()
+            .setTitle("User Banned")
+            .addField("Username", targetUser.username, true)
+            .addField("Reason", reason, true)
+            .setColor("RED")
+            .setTimestamp();
+
+        await interaction.editReply({ embeds: [replyEmbed], ephemeral: true });
+
+        // THE DM INFO yeah
+        if (targetUser.discordId) {
+            try {
+                const discordUser = await interaction.client.users.fetch(targetUser.discordId);
+
+                const dmEmbed = new MessageEmbed()
+                    .setTitle("You Have Been Banned from Reload Backend")
+                    .setDescription("You have been banned ingame.")
+                    .addField("Username", targetUser.username, true)
+                    .addField("Reason", reason, true)
+                    .setColor("RED")
+                    .setFooter("If you think this was a mistake, contact support.")
+                    .setTimestamp();
+
+                await discordUser.send({ embeds: [dmEmbed] });
+            } catch (err) {
+                console.log(`Failed to send DM to ${targetUser.username}:`, err.message);
+            }
+        }
     }
-}
+};
