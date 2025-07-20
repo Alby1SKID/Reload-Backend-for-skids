@@ -14,11 +14,11 @@
                 "disabled": false,
                 "version": 95,
                 "moderationStatus": "Unmoderated",
-                "accountId": "epic",
-                "creatorName": "Epic",
+                "accountId": "reload",
+                "creatorName": "RELOAD",
                 "descriptionTags": [],
                 "metadata": {
-                  "image_url": "https://cdn2.unrealengine.com/solo-1920x1080-1920x1080-bc0a5455ce20.jpg",
+                  "image_url": "https://cdn2.unrealengine.com/s18-br-lategame2-newsheader-1900x600-4b329e68f671.jpg?resize=1&w=2560",
                   "matchmaking": {
                     "override_playlist": "playlist_defaultsolo"
                   }
