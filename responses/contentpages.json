@@ -1151,7 +1151,9 @@
           "playlist_name": "Playlist_DefaultSolo",
           "hidden": false,
           "special_border": "None",
-          "_type": "FortPlaylistInfo"
+          "_type": "FortPlaylistInfo",
+         "display_name": "Solo Lategame",
+         "violator": "RELOAD BACKEND" 
         },
         {
           "image": "https://i.imgur.com/99n3n0m.jpg",
@@ -6274,6 +6276,27 @@
           "videoAutoplay": false,
           "videoFullscreen": false,
           "spotlight": false
+        },
+                {
+          "entryType": "Website",
+          "image": "https://i.imgur.com/ImIwpRm.png",
+          "tileImage": "https://i.imgur.com/KaJkHgq.png",
+          "videoMute": false,
+          "hidden": false,
+          "tabTitleOverride": "Reload Backend",
+          "_type": "CommonUI Simple Message MOTD",
+          "title": "Welcome to Reload!",
+          "body": "Welcome to RELOAD BACKEND!",
+          "offerAction": "ShowOfferDetails",
+          "videoLoop": false,
+          "videoStreamingEnabled": false,
+          "sortingPriority": 1,
+          "websiteButtonText": "Reload Backend - Github",
+          "websiteURL": "https://github.com/Project-Reload/Reload-Backend",
+          "id": "61fb3dd8-f23d-45cc-9058-058ab223ba5c",
+          "videoAutoplay": false,
+          "videoFullscreen": false,
+          "spotlight": false
         }
       ],
       "platform_messages": [
@@ -6355,6 +6378,15 @@
           "sectionId": "Featured",
           "bShowTimer": true,
           "sectionDisplayName": "Reload Item Shop",
+          "bShowIneligibleOffers": true
+        },
+        {
+          "_type": "ShopSection",
+          "landingPriority": 70,
+          "bHidden": false,
+          "sectionId": "Featured",
+          "bShowTimer": true,
+          "sectionDisplayName": "Reload item Shop 2nd section",
           "bShowIneligibleOffers": true
         }
       ]
