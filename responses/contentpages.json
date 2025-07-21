@@ -1150,7 +1150,7 @@
           "image": "https://cdn2.unrealengine.com/s18-br-lategame2-newsheader-1900x600-4b329e68f671.jpg?resize=1&w=2560",
           "playlist_name": "Playlist_DefaultSolo",
           "hidden": false,
-          "special_border": "None",
+          "special_border": "HighStakes",
           "_type": "FortPlaylistInfo",
          "display_name": "Solo Lategame",
          "violator": "RELOAD BACKEND" 
