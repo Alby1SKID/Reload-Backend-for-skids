@@ -65,5 +65,5 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
  - [ ] BUNDLES
  - [ ] ARENA
  - [ ] MORE DISCORD BOT COMMANDS
- - [ ] ADMIN PANEL Posted a base.
+ - [ ] ADMIN PANEL
  - [ ] MORE ENDPOINTS
