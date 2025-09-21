@@ -12,6 +12,6 @@ What Normal reboot has but a bit more
 
 ## TODO
 
- - [ ] Shop Sections
+ - [ ] Shop Sections (Works kinda just need a config)
  - [ ] Arena
  - [ ] More discord commands
