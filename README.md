@@ -61,9 +61,6 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 
 ## TODO
 
- - [ ] SHOP SECTIONS
- - [ ] BUNDLES
- - [ ] ARENA
- - [ ] MORE DISCORD BOT COMMANDS
- - [ ] ADMIN PANEL
- - [ ] MORE ENDPOINTS
+ - [ ] Shop Sections
+ - [ ] Arena
+ - [ ] More discord commands
