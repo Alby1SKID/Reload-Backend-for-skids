@@ -8,7 +8,7 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 
 ## Features
 
-What Normal reboot has but a bit more
+What Normal Reload has but a bit more
 
 ## TODO
 
