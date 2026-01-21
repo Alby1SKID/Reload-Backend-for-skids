@@ -6377,16 +6377,33 @@
           "bHidden": false,
           "sectionId": "Featured",
           "bShowTimer": true,
-          "sectionDisplayName": "Reload Item Shop",
+          "sectionDisplayName": "Reload Featured",
+          "bShowIneligibleOffers": true
+        },
+                {
+          "bSortOffersByOwnership": false,
+          "bShowIneligibleOffersIfGiftable": false,
+          "bEnableToastNotification": true,
+          "background": {
+            "stage": "default",
+            "_type": "DynamicBackground",
+            "key": "vault"
+          },
+          "_type": "ShopSection",
+          "landingPriority": 70,
+          "bHidden": false,
+          "sectionId": "BattlePass",
+          "bShowTimer": true,
+          "sectionDisplayName": "Reload Battle Pass",
           "bShowIneligibleOffers": true
         },
         {
           "_type": "ShopSection",
           "landingPriority": 70,
           "bHidden": false,
-          "sectionId": "Featured",
+          "sectionId": "Daily",
           "bShowTimer": true,
-          "sectionDisplayName": "Reload item Shop 2nd section",
+          "sectionDisplayName": "Reload Daily",
           "bShowIneligibleOffers": true
         }
       ]

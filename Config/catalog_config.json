@@ -2,34 +2,42 @@
   "//": "Item shop config id's can be found at https://fortnite.gg/cosmetics",
   "daily1": {
       "itemGrants": [""],
+       "SectionId": "Daily",
       "price": 0
   },
   "daily2": {
       "itemGrants": [""],
+     "SectionId": "Daily",
       "price": 0
   },
   "daily3": {
       "itemGrants": [""],
+      "SectionId": "Daily",
       "price": 0
   },
   "daily4": {
       "itemGrants": [""],
+                "SectionId": "Daily",
       "price": 0
   },
   "daily5": {
       "itemGrants": [""],
+       "SectionId": "Daily",
       "price": 0
   },
   "daily6": {
       "itemGrants": [""],
+     "SectionId": "Daily",
       "price": 0
   },
   "featured1": {
       "itemGrants": [""],
+     "SectionId": "featured",
       "price": 0
   },
   "featured2": {
       "itemGrants": [""],
+      "SectionId": "featured",
       "price": 0
   }
 }
