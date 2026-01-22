@@ -11,8 +11,8 @@ What Reload Already Has
 AND
 
  - [x] Shop Sections
-
+ - [x] Arena (Kinda working i will fix soon.)
 ## TODO
 
- - [ ] Arena
+
  - [ ] More discord commands
