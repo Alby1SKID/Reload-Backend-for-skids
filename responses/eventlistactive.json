@@ -333,34 +333,53 @@
 				}
 			]
 		},
-		{
-			"eventTemplateId": "eventTemplate_Arena_S8_Division7_Solo",
-			"gameId": "Fortnite",
-			"matchCap": 999,
-			"persistentScoreId": "Hype",
-			"playlistId": "Playlist_ShowdownAlt_Solo",
-			"scoringRules": [
-				{
-					"matchRule": "lte",
-					"rewardTiers": [
-						{"keyValue": 1, "multiplicative": false, "pointsEarned": 50},
-						{"keyValue": 5, "multiplicative": false, "pointsEarned": 5},
-						{"keyValue": 15, "multiplicative": false, "pointsEarned": 5},
-						{"keyValue": 100, "multiplicative": false, "pointsEarned": 5}
-					],
-					"trackedStat": "PLACEMENT_STAT_INDEX"
-				},
-				{
-					"matchRule": "gtw",
-					"rewardTiers": [{"keyValue": 1, "multiplicative": false, "pointsEarned": -20}],
-					"trackedStat": "MATCH_PLAYED_STAT"
-				},
-				{
-					"matchRule": "gte",
-					"rewardTiers": [{"keyValue": 1, "multiplicative": true, "pointsEarned": 20}],
-					"trackedStat": "TEAM_ELIMS_STAT_INDEX"
-				}
-			]
-		}
-	]
-}
+{
+  "gameId": "Fortnite",
+  "displayDataId": "VictoryCupSolo",
+  "page": 0,
+  "totalPages": 1,
+  "eventId": "epicgames_VictoryCup_Solo",
+  "announcementTime": "2026-01-16T17:00:00.000Z",
+  "beginTime": "2026-01-16T17:00:00.000Z",
+  "endTime": "2026-01-21T17:00:00.000Z",
+  "platforms": ["PS4", "XboxOne", "Switch", "Android", "IOS", "Windows"],
+  "regions": ["EU"],
+  "metadata": {
+    "TrackedStats": [
+      "PLACEMENT_STAT_INDEX",
+      "TEAM_ELIMS_STAT_INDEX",
+      "MATCH_PLAYED_STAT"
+    ],
+    "minimumAccountLevel": 0,
+    "RoundType": "Tournament",
+    "EventType": "Tournament"
+  },
+  "eventWindows": [
+    {
+      "eventWindowId": "VictoryCupSolo1",
+      "eventTemplateId": "VictoryCupSolo1",
+      "countdownBeginTime": "2026-01-16T17:36:00.000Z",
+      "beginTime": "2026-01-16T17:36:00.000Z",
+      "endTime": "2026-01-21T17:36:00.000Z",
+      "round": 0,
+      "payoutDelay": 32,
+      "isTBD": false,
+      "leaderboardId": "VictoryCupSololeaderboardId",
+      "visibility": "public",
+      "teammateEligibility": "all",
+      "blackoutPeriods": [],
+      "scoreLocations": [
+        {
+          "leaderboardId": "VictoryCupSololeaderboardId2",
+          "leaderboardDefId": "VictoryCupSololeaderboardId",
+          "scoreId": null,
+          "scoreMode": "window",
+          "isMainWindowLeaderboard": true,
+          "windowEndCondition": null
+         }
+       ]
+     }
+    ]
+   }
+  ]
+  }
