@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background: #000;
+    border-right: 1px solid #222;
+}
+
+
+.topbar {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-size: 16px;
+}
