@@ -1217,7 +1217,32 @@
           "secondary_color": "1B1B1B",
           "playlist_tile_image": "https://static.wikia.nocookie.net/fortnite/images/6/61/Arena_%28Chapter_3%29_-_Mode_-_Fortnite.jpg/revision/latest/scale-to-width-down/1200?cb=20220430000518",
           "base_color": "FFFFFF"
-        }
+        },
+        {
+         "title_color": "FFFFFF",
+        "loading_screen_image": "https://cdn2.unrealengine.com/28comp-fncs-2024-outfits-in-game-poster-front-outfit2-750x1080-f221ec93961c.jpg",
+        "background_text_color": "E6D9FF",
+        "background_right_color": "6A0DAD",
+        "poster_back_image": "https://cdn2.unrealengine.com/28comp-fncs-2024-outfits-in-game-poster-front-outfit2-750x1080-f221ec93961c.jpg",
+        "_type": "Tournament Display Info",
+        "tournament_display_id": "VictoryCupSolo",
+        "highlight_color": "B388FF",
+        "schedule_info": "Reload Backend",
+        "primary_color": "FFFFFF",
+        "flavor_description": "Compete in the Victory Cup Solo tournament!",
+        "poster_front_image": "https://cdn2.unrealengine.com/28comp-fncs-2024-outfits-in-game-poster-front-outfit2-750x1080-f221ec93961c.jpg",
+        "short_format_title": "Victory Cup",
+        "title_line_2": "Reload Victory Cup",
+        "title_line_1": "",
+        "shadow_color": "3A0A66",
+        "details_description": "Thanks for using Reload!",
+        "background_left_color": "FFFFFF",
+        "long_format_title": "Solo Victory Cup",
+        "poster_fade_color": "C9B6FF",
+        "secondary_color": "8F5BFF",
+        "playlist_tile_image": "https://cdn2.unrealengine.com/28comp-fncs-2024-outfits-in-game-poster-front-outfit2-750x1080-f221ec93961c.jpg",
+        "base_color": "FFFFFF"
+}
       ],
       "_type": "Tournaments Info"
     },
