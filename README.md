@@ -12,7 +12,15 @@ AND
 
  - [x] Shop Sections
  - [x] Arena (Kinda working i will fix soon.)
-## TODO
+## To Do
 
 
  - [ ] More discord commands
+
+
+ ## Credits
+
+ - Burlone for modding lawin
+ - Lawin for making the backend
+ - Waslyl for most of the arena code
+ - Alby for modding reload
