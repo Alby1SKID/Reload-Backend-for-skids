@@ -10,6 +10,7 @@ const Profile = require("../model/profiles.js");
 const profileManager = require("../structs/profile.js");
 const Friends = require("../model/friends.js");
 const SaCCodes = require("../model/saccodes.js");
+const Arena = require("../model/arena.js");
 
 async function sleep(ms) {
     await new Promise((resolve, reject) => {
@@ -371,7 +372,6 @@ async function registerUser(discordId, username, email, plainPassword) {
         }).then(async (i) => {
             await Profile.create({ created: i.created, accountId: i.accountId, profiles: profileManager.createProfiles(i.accountId) });
             await Friends.create({ created: i.created, accountId: i.accountId });
-            profileManager.createUserStatsProfiles(i.accountId);
         });
     } catch (err) {
         if (err.code == 11000) {
@@ -410,73 +410,6 @@ async function createSAC(code, username, creator) {
     return { message: "You successfully created an **Support a Creator** Code!", status: 200}
 }
 
-function PlaylistNames(playlist) {
-    switch (playlist) {
-        case "2":
-            return "Playlist_DefaultSolo";
-        case "10":
-            return "Playlist_DefaultDuo";
-        case "9":
-            return "Playlist_DefaultSquad";
-        case "50":
-            return "Playlist_50v50";
-        case "11":
-            return "Playlist_50v50";
-        case "13":
-            return "Playlist_HighExplosives_Squads";
-        case "22":
-            return "Playlist_5x20";
-        case "36":
-            return "Playlist_Blitz_Solo";
-        case "37":
-            return "Playlist_Blitz_Duos";
-        case "19":
-            return "Playlist_Blitz_Squad";
-        case "33":
-            return "Playlist_Carmine";
-        case "32":
-            return "Playlist_Fortnite";
-        case "23":
-            return "Playlist_HighExplosives_Solo";
-        case "24":
-            return "Playlist_HighExplosives_Squads";
-        case "44":
-            return "Playlist_Impact_Solo";
-        case "45":
-            return "Playlist_Impact_Duos";
-        case "46":
-            return "Playlist_Impact_Squads";
-        case "35":
-            return "Playlist_Playground";
-        case "30":
-            return "Playlist_SkySupply";
-        case "42":
-            return "Playlist_SkySupply_Duos";
-        case "43":
-            return "Playlist_SkySupply_Squads";
-        case "41":
-            return "Playlist_Snipers";
-        case "39":
-            return "Playlist_Snipers_Solo";
-        case "40":
-            return "Playlist_Snipers_Duos";
-        case "26":
-            return "Playlist_SolidGold_Solo";
-        case "27":
-            return "Playlist_SolidGold_Squads";
-        case "28":
-            return "Playlist_ShowdownAlt_Solo";
-        case "solo":
-            return "2";
-        case "duo":
-            return "10";
-        case "squad":
-            return "9";
-        default:
-            return playlist;
-    }
-}
-
 function DecodeBase64(str) {
     return Buffer.from(str, 'base64').toString();
 }
@@ -487,6 +420,96 @@ function UpdateTokens() {
         refreshTokens: global.refreshTokens,
         clientTokens: global.clientTokens
     }, null, 2));
+}
+
+
+async function getDivisionPoints(accountId, statType) {
+    const eventListPath = path.join(__dirname, "./../responses/eventlistactive.json");
+    const eventList = JSON.parse(fs.readFileSync(eventListPath, 'utf-8'));
+    const playerData = await Arena.findOne({ accountId });
+    const playerDivision = playerData ? playerData.division : 0;
+
+    const eventWindow = eventList.events[0].eventWindows.find(
+        window => window.metadata.divisionRank === playerDivision
+    );
+
+    if (!eventWindow) {
+console.log("Division not found in the list of events.")
+throw new Error("Division not found in the list of events.")
+    }
+
+    const scoringRule = eventList.templates.find(template => 
+        template.eventTemplateId === eventWindow.eventTemplateId
+    ).scoringRules.find(rule => rule.trackedStat === statType);
+
+    if (scoringRule) {
+        const pointsEarned = scoringRule.rewardTiers[0].pointsEarned;
+        return pointsEarned;
+    }
+
+    return 0;
+}
+
+async function addEliminationHypePoints(user) {
+    const points = await getDivisionPoints(user.account_id, "TEAM_ELIMS_STAT_INDEX");
+    return await updateHypePoints(user, points);
+}
+
+async function addVictoryHypePoints(user) {
+    const points = await getDivisionPoints(user.account_id, "PLACEMENT_STAT_INDEX");
+    return await updateHypePoints(user, points);
+}
+
+async function deductBusFareHypePoints(user) {
+    const points = await getDivisionPoints(user.account_id, "MATCH_PLAYED_STAT");
+    return await updateHypePoints(user, -points);
+}
+
+async function updateHypePoints(user, points) {
+    const accountId = user.account_id || user.accountId;
+
+    let playerData = await Arena.findOne({ accountId });
+    let currentHype = playerData ? playerData.hype : 0;
+    let currentDivision = playerData ? playerData.division : 0;
+
+    currentHype += points;
+
+    const nextDivision = getNextDivision(currentHype, currentDivision);
+    currentDivision = nextDivision;
+
+    await Arena.updateOne(
+        { accountId },
+        { 
+            $set: {
+                accountId: accountId,
+                hype: currentHype,
+                division: currentDivision
+            }
+        },
+        { upsert: true }
+    );
+
+    return {
+        success: true,
+        data: `Points mis à jour à ${currentHype}, Division actuelle : ${currentDivision}`,
+    };
+}
+
+
+function getNextDivision(hypePoints, currentDivision) {
+    const thresholds = [500, 1000, 1500, 2000, 2500, 3000, 99999999];
+    for (let i = 0; i < thresholds.length; i++) {
+        if (hypePoints < thresholds[i]) return i;
+    }
+    return currentDivision;
+}
+
+
+
+function getAccountIdData(UserID) {
+    const account_id = UserID ? UserID.split("|")[1] : "";
+
+    return account_id;
 }
 
 module.exports = {
@@ -501,7 +524,10 @@ module.exports = {
     getPresenceFromUser,
     registerUser,
     createSAC,
-    PlaylistNames,
     DecodeBase64,
-    UpdateTokens
+    UpdateTokens,
+    getAccountIdData,
+    addEliminationHypePoints,
+    addVictoryHypePoints,
+    deductBusFareHypePoints
 }
