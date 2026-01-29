@@ -16,6 +16,10 @@ AND
 
 
  - [ ] More discord commands
+ - [ ] Updated XMPP
+ - [ ] Tournament Support
+ - [ ] Able to be prod ready (Meaning less usage when running for a long time)
+ 
 
 
  ## Credits
