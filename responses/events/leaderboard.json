@@ -1,0 +1,46 @@
+[
+  {
+    "scoreKey": {
+      "gameId": "Fortnite",
+      "eventId": "epicgames_Reload_Cup",
+      "eventWindowId": "ReloadCup",
+      "_scoreId": null
+    },
+    "teamId": "",
+    "teamAccountIds": [""],
+    "liveSessionId": null,
+    "pointsEarned": 250,
+    "score": 250,
+    "rank": 1,
+    "percentile": 1,
+    "pointBreakdown": {
+      "TEAM_ELIMS_STAT_INDEX:1": { "timesAchieved": 1, "pointsEarned": 150 },
+      "PLACEMENT_STAT_INDEX:2": { "timesAchieved": 1, "pointsEarned": 100 }
+    },
+    "sessionHistory": [{}],
+    "unscoredSessions": [],
+    "accountId": ""
+  },
+  {
+    "scoreKey": {
+      "gameId": "Fortnite",
+      "eventId": "epicgames_Reload_Cup",
+      "eventWindowId": "ReloadCup",
+      "_scoreId": null
+    },
+    "teamId": "",
+    "teamAccountIds": [],
+    "liveSessionId": null,
+    "pointsEarned": 200,
+    "score": 200,
+    "rank": 2,
+    "percentile": 90,
+    "pointBreakdown": {
+      "TEAM_ELIMS_STAT_INDEX:1": { "timesAchieved": 2, "pointsEarned": 120 },
+      "PLACEMENT_STAT_INDEX:2": { "timesAchieved": 1, "pointsEarned": 80 }
+    },
+    "sessionHistory": [{}],
+    "unscoredSessions": [],
+    "accountId": ""
+  }
+]
