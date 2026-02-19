@@ -10,6 +10,7 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 What Reload Already Has
 AND
 
+ - [x] More discord commands
  - [x] Shop Sections
  - [x] Arena (Kinda working i will fix soon.)
 ## To Do
